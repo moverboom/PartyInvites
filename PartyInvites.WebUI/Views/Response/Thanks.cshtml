@@ -1,0 +1,28 @@
+﻿@model PartyInvites.Domain.Entities.GuestResponse
+
+@{
+    ViewBag.Title = "Thanks";
+}
+
+<div class="panel panel-primary col-lg-6 col-lg-offset-3
+                                col-md-8 col-md-offset-2
+                                col-sm-10 col-sm-offset-1
+                                col-xs-12 text-center">
+    <h2>Thank you, @Model.Name!</h2>
+    <div class="lead">
+        @if (ViewBag.ResponseAdded == true) {
+            if (Model.WillAttend == true) {
+                @:It's great that you are coming. The drinks are already in the fridge!
+                } else {
+                @:Sorry to hear that you can't make it, but thanks for letting us know.
+                }
+        } else {
+            @:<p class="text-primary">You have already submitted the RSVP form</p>
+        }
+    </div>
+    <div class="text-center" id="custom-button">
+        @Html.ActionLink("Home", "Index", "Home",
+                                    null,
+                                    new { @class = "btn btn-primary" })
+    </div>
+</div>

@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyInvites.WebUI", "PartyInvites.WebUI\PartyInvites.WebUI.csproj", "{F42C923E-CCF7-4F94-9011-BBF6FCD43333}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyInvites.Tests", "PartyInvites.Tests\PartyInvites.Tests.csproj", "{A4FE4C37-3659-4CC8-AB76-C9796572A296}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PartyInvites.Domain", "PartyInvites.Domain\PartyInvites.Domain.csproj", "{2F72E63E-7543-4261-829C-53C5E29C639A}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F42C923E-CCF7-4F94-9011-BBF6FCD43333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F42C923E-CCF7-4F94-9011-BBF6FCD43333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F42C923E-CCF7-4F94-9011-BBF6FCD43333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F42C923E-CCF7-4F94-9011-BBF6FCD43333}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4FE4C37-3659-4CC8-AB76-C9796572A296}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4FE4C37-3659-4CC8-AB76-C9796572A296}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4FE4C37-3659-4CC8-AB76-C9796572A296}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4FE4C37-3659-4CC8-AB76-C9796572A296}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F72E63E-7543-4261-829C-53C5E29C639A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F72E63E-7543-4261-829C-53C5E29C639A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F72E63E-7543-4261-829C-53C5E29C639A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F72E63E-7543-4261-829C-53C5E29C639A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection

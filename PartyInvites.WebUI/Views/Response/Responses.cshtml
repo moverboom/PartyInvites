@@ -1,0 +1,36 @@
+﻿@using PartyInvites.Domain.Entities
+@model PartyInvites.WebUI.Models.ResponseListViewModel
+@{
+    ViewBag.Title = "Responses";
+}
+
+<div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2
+            col-sm-10 col-sm-offset-1 col-xs-12 text-center">
+    <h2>Responses</h2>
+    <div>
+        <div class="pull-right">
+
+        </div>
+        <div>
+            <table class="table table-hover" cellpadding="0" cellspacing="0" border="0">
+                <thead><tr><th>Name</th><th>Attends</th><th>E-mail</th></tr></thead>
+                <tbody>
+                @foreach (var g in Model.GuestResponses) {
+                    <tr class="@(g.WillAttend == true ? "success" : "warning" )">
+                        <td>@g.Name</td>
+                        <td>@(g.WillAttend == true ? "Yes" : "No" ) </td>
+                        <td>@g.Email</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-primary">
+                @Html.ActionLink("Home", "Index")
+            </button>
+        </div>
+    </div>
+    <div>
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Responses", new { page = x}))
+    </div>
+</div>
+

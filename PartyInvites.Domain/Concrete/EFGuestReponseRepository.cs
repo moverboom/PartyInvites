@@ -11,7 +11,11 @@ namespace PartyInvites.Domain.Concrete {
         private EFDbContext context = new EFDbContext();
 
         public GuestResponse GetResponse(string email) {
-            throw new NotImplementedException();
+            if (context.GuestResponses.Count(g => g.Email == email) == 1) {
+                return context.GuestResponses.Where(g => g.Email == email) as GuestResponse;
+            } else {
+                return null;
+            }
         }
 
         public IEnumerable<GuestResponse> GetAllResponses() {
@@ -19,7 +23,13 @@ namespace PartyInvites.Domain.Concrete {
         }
 
         public bool AddResponse(GuestResponse response) {
-            throw new NotImplementedException();
+            if (context.GuestResponses.Count(g => g.Email == response.Email) == 0) {
+                context.GuestResponses.Add(response);
+                context.SaveChanges();
+                return true;
+            } else {
+                return false;
+            }
         }
 
         public bool EditResponse(GuestResponse response) {

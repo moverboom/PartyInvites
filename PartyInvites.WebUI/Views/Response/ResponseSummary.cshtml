@@ -1,0 +1,8 @@
+﻿@model PartyInvites.Domain.Entities.GuestResponse[]
+
+<div class="navbar-right">
+    @* ActionLink("Text", "Action", "Controller") *@
+    @Html.ActionLink("Total Responses: " + @Model.Length, "Responses", "Response",
+        null,
+        new { @class = "btn btn-default navbar-btn"})
+</div>

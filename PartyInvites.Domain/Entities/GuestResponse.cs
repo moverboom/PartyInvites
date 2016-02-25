@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace PartyInvites.Domain.Entities {
     public class GuestResponse {
+        //When a property has the suffic -ID or is just ID, than EF will
+        //use this a the primary key
         public int GuestResponseID { get; set; }
 
         [Required(ErrorMessage = "Please enter your name")]

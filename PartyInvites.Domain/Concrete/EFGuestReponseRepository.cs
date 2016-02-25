@@ -12,7 +12,7 @@ namespace PartyInvites.Domain.Concrete {
 
         public GuestResponse GetResponse(string email) {
             if (context.GuestResponses.Count(g => g.Email == email) == 1) {
-                return context.GuestResponses.Where(g => g.Email == email) as GuestResponse;
+                return context.GuestResponses.Where(g => g.Email == email).FirstOrDefault();
             } else {
                 return null;
             }

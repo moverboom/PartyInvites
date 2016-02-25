@@ -12,7 +12,7 @@ namespace PartyInvites.WebUI.HtmlHelpers {
                                                 PagingInfo pagingInfo,
                                                 Func<int, string> pageUrl ) {
             StringBuilder result = new StringBuilder();
-            for (int i = 1; i <= pagingInfo.TotalResponses; i++) {
+            for (int i = 1; i <= pagingInfo.TotalPages; i++) {
                 TagBuilder tag = new TagBuilder("a");
                 tag.MergeAttribute("href", pageUrl(i));
                 tag.InnerHtml = i.ToString();

@@ -11,6 +11,10 @@
     text-align: center;
 }
 
+#responses-top {
+    margin-top: 35px;
+}
+
 .btn {
     border-radius: 0px;
 }

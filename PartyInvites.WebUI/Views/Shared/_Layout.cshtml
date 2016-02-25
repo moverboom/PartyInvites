@@ -10,7 +10,9 @@
 </head>
 <body>
 <div class="navbar navbar-default" role="navigation">
-    <a class="navbar-brand" href="#">PartyInvites</a>
+    @Html.ActionLink("PartyInvites", "Index", "Home",
+                                    null,
+                                    new { @class = "navbar-brand" })
     @Html.Action("ResponseSummary", "Response")
 </div>
 <div>

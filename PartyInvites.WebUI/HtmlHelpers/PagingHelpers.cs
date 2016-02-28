@@ -18,7 +18,7 @@ namespace PartyInvites.WebUI.HtmlHelpers {
                 tag.InnerHtml = i.ToString();
                 if (i == pagingInfo.CurrentPage) {
                     tag.AddCssClass("selected");
-                    tag.AddCssClass("btn btn-primary");
+                    tag.AddCssClass("btn-primary");
                 }
                 tag.AddCssClass("btn btn-default");
                 result.Append((tag.ToString()));

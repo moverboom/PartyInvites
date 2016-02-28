@@ -18,6 +18,10 @@ namespace PartyInvites.WebUI
                 new { controller = "Home", action = "Index" });
 
             routes.MapRoute(null,
+                "Response/Responses",
+                new { controller = "Response", action = "Responses" });
+
+            routes.MapRoute(null,
                 "Response/Responses/Page{page}",
                 new { controller = "Response", action = "Responses", filter = (string)null },
                 new { page = @"\d+" });

@@ -8,12 +8,13 @@ using PartyInvites.Domain.Abstract;
 using PartyInvites.Domain.Entities;
 using PartyInvites.WebUI.HtmlHelpers;
 using PartyInvites.WebUI.Models;
+using System.IO;
 
 namespace PartyInvites.WebUI.Controllers
 {
     public class ResponseController : Controller {
         private IRepository repository;
-        private int PageSize = 4;
+        public int PageSize = 4;
 
         public ResponseController(IRepository repositoryParam) {
             repository = repositoryParam;
@@ -39,10 +40,14 @@ namespace PartyInvites.WebUI.Controllers
             }
         }
 
-        public FileContentResult GetImage(string Email) {
+        public FileResult GetImage(string Email) {
             GuestResponse guestResponse = repository.GetResponse(Email);
             if (guestResponse != null) {
-                return File(guestResponse.ImageData, guestResponse.ImageMimeType);
+                if (guestResponse.ImageData != null && guestResponse.ImageMimeType != null) {
+                    return new FileContentResult(guestResponse.ImageData, guestResponse.ImageMimeType);
+                } else {
+                    return new FilePathResult(HttpContext.Server.MapPath("~/Content/images/toothless.gif"), "image/gif");
+                }
             } else {
                 return null;
             }

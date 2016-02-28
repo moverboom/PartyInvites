@@ -111,7 +111,7 @@
   <ItemGroup>
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RepositoryTest.cs" />
+    <Compile Include="Unittest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PartyInvites.Domain\PartyInvites.Domain.csproj">

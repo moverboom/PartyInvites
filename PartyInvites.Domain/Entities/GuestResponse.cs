@@ -24,5 +24,8 @@ namespace PartyInvites.Domain.Entities {
 
         [Required(ErrorMessage = "Please specify whter you'll attend")]
         public bool? WillAttend { get; set; }
+
+        public byte[] ImageData { get; set; }
+        public string ImageMimeType { get; set; }
     }
 }

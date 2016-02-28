@@ -9,10 +9,12 @@
     <h2>Responses</h2>
     <div>
         <div class="pull-right">
-            @Html.DropDownList("Attendance",
-                new SelectList(new List<string> {"All", "Is Attanding", "Not Attending"}),
-                "Filter...",
-                new {@class = "form-control"})
+            @using (Html.BeginForm("Responses", "Response")) {
+                @Html.DropDownList("filter",
+                new SelectList(new List<string> { "All", "Will Attend", "Will Not Attend" }),
+                Model.Filter == null ? "Filter..." : Model.Filter)
+                <input class="btn btn-primary btn-sm" type="submit" value="Filter" />
+            }
         </div>
         <div>
             <table class="table table-hover" cellpadding="0" cellspacing="0" border="0">
@@ -30,7 +32,7 @@
         </div>
     </div>
     <div class="pull-right">
-        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Responses", new {page = x}))
+        @Html.PageLinks(Model.PagingInfo, x => Url.Action("Responses", new {page = x, filter = Model.Filter}))
     </div>
     <br/>
     <div class="text-center" id="responses-top">

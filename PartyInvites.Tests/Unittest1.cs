@@ -127,7 +127,95 @@ namespace PartyInvites.Tests {
         }
 
         [TestMethod]
-        public void Can_Filter_Responses() {
+        public void Can_Filter_Responses_All() {
+            //arrange
+            Mock<IRepository> mock = new Mock<IRepository>();
+            mock.Setup(m => m.GetAllResponses()).Returns(new List<GuestResponse> {
+                new GuestResponse {
+                    Name = "Matthijs",
+                    Email = "matthijs@test.nl",
+                    Phone = "0612345678",
+                    WillAttend = true
+                },
+                new GuestResponse {
+                    Name = "Piet",
+                    Email = "piet@test.nl",
+                    Phone = "0612345678",
+                    WillAttend = false
+                },
+                new GuestResponse {
+                    Name = "Truus",
+                    Email = "truus@test.nl",
+                    Phone = "0612345678",
+                    WillAttend = true
+                },
+                new GuestResponse {
+                    Name = "Anja",
+                    Email = "anja@test.nl",
+                    Phone = "0612345678",
+                    WillAttend = false
+                }
+            });
+
+            ResponseController target = new ResponseController(mock.Object);
+            target.PageSize = 3;
+
+            //act
+            GuestResponse[] result = ((ResponseListViewModel)target.Responses("All").Model).GuestResponses.ToArray();
+
+
+            //assert
+            Assert.AreEqual(3, result.Count());
+            Assert.IsTrue(result[0].Name == "Matthijs" && result[0].WillAttend == true);
+            Assert.IsTrue(result[2].Name == "Truus" && result[1].WillAttend == false);
+        }
+
+        [TestMethod]
+        public void Can_Filter_Responses_Not_Attending() {
+            //arrange
+            Mock<IRepository> mock = new Mock<IRepository>();
+            mock.Setup(m => m.GetAllResponses()).Returns(new List<GuestResponse> {
+                new GuestResponse {
+                    Name = "Matthijs",
+                    Email = "matthijs@test.nl",
+                    Phone = "0612345678",
+                    WillAttend = true
+                },
+                new GuestResponse {
+                    Name = "Piet",
+                    Email = "piet@test.nl",
+                    Phone = "0612345678",
+                    WillAttend = false
+                },
+                new GuestResponse {
+                    Name = "Truus",
+                    Email = "truus@test.nl",
+                    Phone = "0612345678",
+                    WillAttend = true
+                },
+                new GuestResponse {
+                    Name = "Anja",
+                    Email = "anja@test.nl",
+                    Phone = "0612345678",
+                    WillAttend = false
+                }
+            });
+
+            ResponseController target = new ResponseController(mock.Object);
+            target.PageSize = 3;
+
+            //act
+            GuestResponse[] result = ((ResponseListViewModel)target.Responses("Will Not Attend").Model).GuestResponses.ToArray();
+
+
+            //assert
+            Assert.AreEqual(result.Count(), 2);
+            Assert.IsTrue(result[0].Name == "Piet" && result[0].WillAttend == false);
+            Assert.IsTrue(result[1].Name == "Anja" && result[1].WillAttend == false);
+        }
+
+        [TestMethod]
+        public void Can_Filter_Responses_Attending() {
             //arrange
             Mock<IRepository> mock = new Mock<IRepository>();
             mock.Setup(m => m.GetAllResponses()).Returns(new List<GuestResponse> {
@@ -163,10 +251,11 @@ namespace PartyInvites.Tests {
             //act
             GuestResponse[] result = ((ResponseListViewModel)target.Responses("Will Attend").Model).GuestResponses.ToArray();
 
+
             //assert
-            Assert.AreEqual(result.Length, 2);
+            Assert.AreEqual(result.Count(), 2);
             Assert.IsTrue(result[0].Name == "Matthijs" && result[0].WillAttend == true);
-            Assert.IsTrue(result[1].Name == "Truus" && result[0].WillAttend == true);
+            Assert.IsTrue(result[1].Name == "Truus" && result[1].WillAttend == true);
         }
     }
 }
